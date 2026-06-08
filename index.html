@@ -3,160 +3,216 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Blushbooth By Gift 🎀</title>
 <style>
 :root{
-  --cream:#fdf8f0;--pink:#f9a8c9;--pkd:#e87dab;--pkl:#fde8f1;--pkp:#fff0f7;
-  --burg:#8b1a1a;--burgl:#c0392b;--blue:#b8d4e8;--bluedark:#4a7fa5;
-  --black:#1a1a1a;--white:#ffffff;--gold:#d4a853;
-  --tx:#3a2020;--br:#8b5c6e;
+  --burg:#8b1a1a;--burgl:#c0392b;--pkl:#fde8f1;--pkd:#e87dab;
+  --cream:#fdf8f0;--br:#8b5c6e;--tx:#3a2020;--white:#ffffff;
 }
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html,body{height:100%;font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;background:var(--cream);overflow-x:hidden}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;-webkit-touch-callout:none}
+html{height:100%;height:-webkit-fill-available}
+body{width:100%;height:100%;height:-webkit-fill-available;overflow:hidden;
+  font-family:-apple-system,'SF Pro Display','Helvetica Neue',Arial,sans-serif;
+  background:var(--cream);-webkit-font-smoothing:antialiased}
 
-/* ── FLASH ── */
-#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:9999;transition:opacity .08s}
+#flash{position:fixed;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:9999;transition:opacity .12s}
 #flash.go{opacity:1}
 
-/* ── NAV ── */
-.nav{background:linear-gradient(135deg,var(--burg),var(--burgl));padding:14px 20px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,.25)}
-.nav-logo{font-family:Georgia,serif;font-style:italic;font-size:24px;color:#fff;text-shadow:1px 2px 4px rgba(0,0,0,.3)}
-.nav-sub{font-size:10px;color:rgba(255,255,255,.7);letter-spacing:3px;text-transform:uppercase}
-.nav-bow{font-size:22px}
+/* NAV */
+.nav{height:44px;background:linear-gradient(135deg,var(--burg),var(--burgl));
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 16px;flex-shrink:0;position:relative;z-index:10}
+.nav-logo{font-family:Georgia,serif;font-style:italic;font-size:17px;color:#fff;font-weight:600}
+.nav-step{font-size:11px;color:rgba(255,255,255,.75);font-weight:500}
 
-/* ── SCREENS ── */
-.screen{display:none;min-height:calc(100vh - 56px)}
-.screen.on{display:block}
+/* SCREENS */
+.screen{display:none;height:calc(100vh - 44px);height:calc(var(--vh,1vh)*100 - 44px);flex-direction:column;overflow:hidden}
+.screen.on{display:flex}
 
-/* ══════════════════
+/* ══════════════════════════
    SCREEN 1: WELCOME
-══════════════════ */
-#s-welcome{background:linear-gradient(160deg,var(--cream) 0%,#fce8e8 100%);padding:28px 20px;text-align:center}
-.welcome-hero{margin-bottom:28px}
-.welcome-hero h1{font-family:Georgia,serif;font-style:italic;font-size:42px;color:var(--burg);text-shadow:1px 2px 0 #fff;line-height:1.1}
-.welcome-hero p{color:var(--br);font-size:14px;margin-top:8px;line-height:1.7}
+══════════════════════════ */
+#sw{background:linear-gradient(160deg,var(--cream),#fce8e8);
+  padding:12px 16px;gap:10px;align-items:center;text-align:center;overflow-y:auto}
+.wt{font-family:Georgia,serif;font-style:italic;font-size:22px;color:var(--burg);font-weight:700}
+.ws{font-size:11px;color:var(--br);line-height:1.4}
 
-.name-section{background:#fff;border-radius:20px;padding:20px;max-width:440px;margin:0 auto 24px;box-shadow:0 4px 20px rgba(139,26,26,.12);border:2px solid var(--pkl)}
-.name-section label{font-size:11px;font-weight:700;color:var(--burg);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:8px}
-.name-input{width:100%;border:2px solid var(--pkl);border-radius:50px;padding:11px 20px;font-size:20px;font-family:Georgia,serif;font-style:italic;color:var(--pkd);text-align:center;outline:none;background:#fff}
-.name-input:focus{border-color:var(--pkd)}
+.name-row{display:flex;align-items:center;gap:8px;width:100%;max-width:360px}
+.name-row label{font-size:10px;font-weight:700;color:var(--burg);white-space:nowrap;letter-spacing:1px;text-transform:uppercase}
+.name-in{flex:1;border:2px solid var(--pkl);border-radius:22px;padding:7px 14px;
+  font-size:15px;font-family:Georgia,serif;font-style:italic;color:var(--pkd);
+  text-align:center;outline:none;background:#fff;-webkit-appearance:none}
+.name-in:focus{border-color:var(--pkd)}
 
-.section-title{font-family:Georgia,serif;font-size:18px;color:var(--burg);margin-bottom:16px;font-style:italic}
+.slbl{font-size:10px;font-weight:700;color:var(--burg);letter-spacing:1.5px;
+  text-transform:uppercase;align-self:flex-start;width:100%;max-width:360px}
+.lrow{display:flex;gap:8px;width:100%;max-width:360px}
+.lc{background:#fff;border-radius:10px;padding:8px 6px;cursor:pointer;
+  border:2px solid #e8d5d5;flex:1;text-align:center;transition:all .2s;
+  -webkit-user-select:none;user-select:none}
+.lc.sel{border-color:var(--burg);background:linear-gradient(135deg,#fff5f5,#fff)}
+.lcp{display:flex;flex-direction:column;gap:2px;align-items:center;margin-bottom:5px}
+.lcs{background:#fde8e8;border:1px solid #d4a0a0;border-radius:2px;width:42px}
+.lcn{font-weight:700;font-size:10px;color:var(--burg)}
 
-/* Layout cards */
-.layout-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:440px;margin:0 auto 28px}
-.layout-card{background:#fff;border-radius:16px;padding:16px 10px;cursor:pointer;border:2.5px solid #e8d5d5;transition:all .2s;box-shadow:0 3px 12px rgba(139,26,26,.08);text-align:center}
-.layout-card:hover,.layout-card.sel{border-color:var(--burg);background:linear-gradient(135deg,#fff5f5,#fff)}
-.layout-card:active{transform:scale(.97)}
-.layout-preview{display:flex;flex-direction:column;gap:3px;align-items:center;margin-bottom:8px}
-.layout-slot{background:linear-gradient(135deg,#f0d5d5,#fde8e8);border:1.5px solid #d4a0a0;border-radius:4px}
-.layout-name{font-weight:700;font-size:12px;color:var(--burg)}
-.layout-desc{font-size:10px;color:#b07070;margin-top:2px}
+.trow{display:flex;gap:6px;width:100%;max-width:360px}
+.tc{border-radius:10px;padding:7px 5px;cursor:pointer;border:2px solid transparent;
+  flex:1;text-align:center;transition:all .15s;-webkit-user-select:none;user-select:none}
+.tc.sel{box-shadow:0 0 0 2.5px var(--burg)}
+.tci{font-size:18px;line-height:1}
+.tcn{font-size:9px;font-weight:700;margin-top:3px}
 
-/* Theme cards */
-.theme-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:440px;margin:0 auto 28px}
-.theme-card{border-radius:16px;padding:14px 12px;cursor:pointer;border:2.5px solid transparent;transition:all .2s;text-align:center;position:relative;overflow:hidden}
-.theme-card:active{transform:scale(.97)}
-.theme-card.sel{border-color:#fff;box-shadow:0 0 0 3px var(--burg)}
-.theme-name{font-weight:700;font-size:13px;margin-top:6px}
-.theme-preview{height:50px;border-radius:8px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:20px}
+.sbtn{background:linear-gradient(135deg,var(--burg),var(--burgl));color:#fff;
+  border:none;border-radius:22px;padding:13px 40px;font-size:15px;font-weight:700;
+  cursor:pointer;box-shadow:0 4px 14px rgba(139,26,26,.3);letter-spacing:.3px;
+  -webkit-appearance:none;touch-action:manipulation}
 
-/* Start button */
-.start-btn{background:linear-gradient(135deg,var(--burg),var(--burgl));color:#fff;border:none;border-radius:50px;padding:16px 48px;font-size:16px;font-weight:700;cursor:pointer;box-shadow:0 6px 24px rgba(139,26,26,.35);letter-spacing:1px;transition:all .2s}
-.start-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(139,26,26,.45)}
-.start-btn:active{transform:scale(.97)}
-
-/* ══════════════════
+/* ══════════════════════════
    SCREEN 2: CAMERA
-══════════════════ */
-#s-camera{background:linear-gradient(160deg,var(--cream),#fce8e8);padding:16px}
-.cam-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
-.cam-title{font-family:Georgia,serif;font-style:italic;font-size:20px;color:var(--burg)}
-.back-btn{background:#fff;border:2px solid #e8d5d5;border-radius:50px;padding:8px 16px;font-weight:700;font-size:13px;color:var(--burg);cursor:pointer;transition:all .2s}
-.back-btn:hover{background:var(--pkl)}
+══════════════════════════ */
+#sc{background:#f8f0f0;padding:6px 10px 8px;gap:5px}
 
-/* Camera area */
-.cam-area{background:#fff;border-radius:20px;padding:16px;box-shadow:0 6px 28px rgba(139,26,26,.12);border:2px solid #e8d5d5;margin-bottom:14px}
-.cam-layout{display:flex;gap:14px}
-.cam-strip{display:flex;flex-direction:column;gap:8px;width:100px;flex-shrink:0}
-.slot{aspect-ratio:4/3;border-radius:10px;overflow:hidden;border:2px solid #e8d5d5;position:relative;background:linear-gradient(135deg,#f5e8e8,#fde8e8);display:flex;align-items:center;justify-content:center;font-size:11px;color:#c0a0a0;font-weight:700;flex-direction:column;gap:4px}
-.slot.done{border-color:var(--burg)}
-.slot.active{border-color:var(--pkd);box-shadow:0 0 0 2px var(--pkd)}
-.slot img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
-.slot .slot-num{position:absolute;top:4px;left:6px;font-size:9px;background:rgba(255,255,255,.85);border-radius:10px;padding:1px 6px;color:var(--burg);font-weight:700;z-index:2}
-.slot .slot-ck{position:absolute;top:3px;right:5px;font-size:11px;z-index:2}
-
-.cam-live{flex:1;display:flex;flex-direction:column;gap:10px;align-items:center}
-.vid-box{width:100%;border-radius:14px;overflow:hidden;border:2px solid #e8d5d5;aspect-ratio:3/4;background:#111;position:relative}
-.vid-box video{width:100%;height:100%;object-fit:cover;transform:scaleX(-1)}
-.vid-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.cdown-num{font-family:Georgia,serif;font-style:italic;font-size:96px;color:#fff;text-shadow:0 0 30px rgba(0,0,0,.8),2px 2px 0 var(--burg);animation:pulse 1s infinite;display:none}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
-
-.cam-hint{font-size:13px;color:var(--br);font-weight:600;text-align:center}
-.shutter{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--burg),var(--burgl));border:5px solid #fff;box-shadow:0 0 0 3px var(--burg),0 6px 20px rgba(139,26,26,.4);cursor:pointer;font-size:26px;display:flex;align-items:center;justify-content:center;transition:transform .12s;flex-shrink:0}
-.shutter:active{transform:scale(.9)}
-
-/* Adjustments */
-.adj-row{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none;width:100%}
-.adj-row::-webkit-scrollbar{display:none}
-.adj-item{flex-shrink:0;text-align:center}
-.adj-item label{font-size:10px;color:var(--br);font-weight:700;display:block;margin-bottom:4px;white-space:nowrap}
-.adj-item input[type=range]{width:80px;accent-color:var(--burg)}
-
-/* Filters */
-.filter-row{display:flex;gap:8px;overflow-x:auto;padding:4px 0;scrollbar-width:none;width:100%}
-.filter-row::-webkit-scrollbar{display:none}
-.fpill{flex-shrink:0;background:#fff;border:2px solid #e8d5d5;border-radius:50px;padding:7px 14px;font-size:12px;font-weight:700;color:var(--burg);cursor:pointer;white-space:nowrap;transition:all .15s}
-.fpill.on{background:var(--burg);color:#fff;border-color:var(--burg)}
-
-.section-lbl{font-size:11px;font-weight:700;color:var(--burg);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
+.chdr{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;height:30px}
+.ctitle{font-family:Georgia,serif;font-style:italic;font-size:14px;color:var(--burg);font-weight:600}
+.bbtn{background:#fff;border:1.5px solid #e0d0d0;border-radius:14px;
+  padding:4px 12px;font-weight:600;font-size:11px;color:var(--burg);
+  cursor:pointer;-webkit-appearance:none;touch-action:manipulation}
 
 /* Error box */
-.err-box{background:#fff5f5;border:2px solid var(--burgl);border-radius:14px;padding:14px 16px;margin-bottom:12px}
-.err-box h4{color:var(--burg);font-size:13px;font-weight:700;margin-bottom:6px}
-.err-box p{font-size:12px;color:var(--tx);line-height:1.7}
-.retry-btn{background:var(--burg);color:#fff;border:none;border-radius:50px;padding:9px 20px;font-weight:700;font-size:13px;cursor:pointer;margin-top:10px}
+.errbox{background:#fff5f5;border:2px solid var(--burgl);border-radius:10px;
+  padding:10px 12px;flex-shrink:0;display:none}
+.errbox h4{color:var(--burg);font-size:12px;font-weight:700;margin-bottom:4px}
+.errbox p{font-size:11px;color:var(--tx);line-height:1.6}
+.rbtn{background:var(--burg);color:#fff;border:none;border-radius:14px;
+  padding:7px 16px;font-weight:700;font-size:11px;cursor:pointer;margin-top:8px;
+  -webkit-appearance:none;touch-action:manipulation}
 
-/* ══════════════════
+/* Main camera area */
+.cmain{display:flex;gap:8px;flex:1;min-height:0;overflow:hidden}
+
+/* Thumbnail strip */
+.cstrip{display:flex;flex-direction:column;gap:5px;width:66px;flex-shrink:0;
+  justify-content:center;overflow:hidden}
+.slot{position:relative;width:66px;border-radius:8px;overflow:hidden;
+  border:2px solid #e0d0d0;background:linear-gradient(135deg,#f5e8e8,#fde8e8);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  flex:1;min-height:40px;max-height:120px}
+.slot.done{border-color:var(--burg)}
+.slot.active{border-color:var(--pkd);box-shadow:0 0 0 1.5px var(--pkd)}
+.slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:6px}
+.slot-icon{font-size:14px;opacity:.3;pointer-events:none}
+.snum{position:absolute;top:2px;left:3px;font-size:8px;background:rgba(255,255,255,.9);
+  border-radius:6px;padding:1px 4px;color:var(--burg);font-weight:700;z-index:2}
+.sck{position:absolute;top:2px;right:3px;font-size:9px;z-index:2}
+
+/* Video area */
+.cright{flex:1;display:flex;flex-direction:column;gap:5px;min-width:0;overflow:hidden}
+.vidwrap{flex:1;border-radius:12px;overflow:hidden;border:2px solid #e0d0d0;
+  background:#000;position:relative;min-height:0}
+.vidwrap video{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;transform:scaleX(-1);display:block}
+/* Filter overlay canvas */
+#prevCvs{position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;display:block;opacity:0;transition:opacity .1s}
+#prevCvs.active{opacity:1}
+/* Countdown overlay */
+.cdover{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;pointer-events:none;background:rgba(0,0,0,.15)}
+.cdnum{font-family:Georgia,serif;font-style:italic;
+  font-size:80px;color:#fff;
+  text-shadow:0 0 30px rgba(0,0,0,.8),2px 3px 0 var(--burg);
+  animation:pulse 1s infinite;display:none;line-height:1}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+
+/* Controls */
+.cbot{display:flex;align-items:center;gap:10px;flex-shrink:0;height:46px;padding:0 4px}
+.shr{width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--burg),var(--burgl));
+  border:3px solid #fff;box-shadow:0 0 0 2px var(--burg),0 3px 10px rgba(139,26,26,.4);
+  cursor:pointer;font-size:20px;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;touch-action:manipulation;-webkit-appearance:none;transition:transform .1s}
+.shr:active{transform:scale(.88)}
+.shr:disabled{opacity:.4;transform:none}
+.chint{font-size:11px;color:var(--br);font-weight:600;flex:1;text-align:center;line-height:1.3}
+
+/* Filter pills */
+.frow{display:flex;gap:5px;overflow-x:auto;flex-shrink:0;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  height:28px;align-items:center;padding:0 2px}
+.frow::-webkit-scrollbar{display:none}
+.fp{flex-shrink:0;background:#fff;border:1.5px solid #e0d0d0;border-radius:14px;
+  padding:3px 10px;font-size:10px;font-weight:700;color:var(--burg);
+  cursor:pointer;white-space:nowrap;height:24px;display:flex;align-items:center;
+  touch-action:manipulation;transition:all .15s;-webkit-appearance:none}
+.fp.on{background:var(--burg);color:#fff;border-color:var(--burg)}
+
+/* Adjustment sliders */
+.arow{display:flex;gap:10px;overflow-x:auto;flex-shrink:0;
+  scrollbar-width:none;height:26px;align-items:center;
+  -webkit-overflow-scrolling:touch}
+.arow::-webkit-scrollbar{display:none}
+.ai{display:flex;align-items:center;gap:4px;flex-shrink:0}
+.ai label{font-size:9px;font-weight:600;color:var(--br);white-space:nowrap}
+.ai input[type=range]{width:55px;height:4px;accent-color:var(--burg);
+  -webkit-appearance:none;appearance:none;background:#e0d0d0;border-radius:2px;outline:none}
+.ai input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:14px;height:14px;
+  border-radius:50%;background:var(--burg);cursor:pointer}
+
+/* ══════════════════════════
    SCREEN 3: EDITOR
-══════════════════ */
-#s-editor{background:linear-gradient(160deg,var(--cream),#fce8e8);padding:16px}
-.editor-layout{display:flex;gap:16px;flex-wrap:wrap}
-.editor-left{flex:1;min-width:200px}
-.editor-right{width:100%;max-width:320px;margin:0 auto}
+══════════════════════════ */
+#se{background:#f8f0f0;padding:6px 10px 8px;gap:6px;overflow:hidden}
+.elay{display:flex;gap:10px;flex:1;min-height:0;overflow:hidden}
+.ectrls{flex:1;display:flex;flex-direction:column;gap:6px;
+  overflow-y:auto;min-width:0;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none}
+.ectrls::-webkit-scrollbar{display:none}
+.eprev{width:175px;flex-shrink:0;display:flex;flex-direction:column;gap:6px}
 
-.editor-panel{background:#fff;border-radius:16px;padding:16px;box-shadow:0 4px 20px rgba(139,26,26,.1);border:2px solid #e8d5d5;margin-bottom:14px}
-.editor-panel h3{font-family:Georgia,serif;font-style:italic;font-size:16px;color:var(--burg);margin-bottom:12px}
+.ep{background:#fff;border-radius:10px;padding:8px 10px;
+  border:1.5px solid #e8d5d5;flex-shrink:0}
+.ep h4{font-family:Georgia,serif;font-style:italic;font-size:12px;
+  color:var(--burg);margin-bottom:7px;font-weight:600}
 
-.color-grid{display:flex;gap:8px;flex-wrap:wrap}
-.color-btn{width:32px;height:32px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:all .15s;flex-shrink:0}
-.color-btn.sel{border-color:var(--burg);transform:scale(1.15)}
+.crow{display:flex;gap:5px;flex-wrap:wrap}
+.cb{width:24px;height:24px;border-radius:50%;cursor:pointer;
+  border:2.5px solid transparent;transition:all .15s;flex-shrink:0}
+.cb.sel{border-color:var(--burg);transform:scale(1.15)}
 
-.text-input{width:100%;border:2px solid #e8d5d5;border-radius:10px;padding:9px 12px;font-size:14px;color:var(--tx);outline:none;font-family:inherit;margin-bottom:8px}
-.text-input:focus{border-color:var(--burg)}
+.tin{width:100%;border:1.5px solid #e8d5d5;border-radius:8px;
+  padding:6px 10px;font-size:12px;color:var(--tx);outline:none;
+  margin-bottom:5px;-webkit-appearance:none;background:#fff}
+.tin:focus{border-color:var(--burg)}
 
-.font-grid{display:flex;gap:6px;flex-wrap:wrap}
-.font-btn{background:#f8f0f0;border:2px solid #e8d5d5;border-radius:8px;padding:6px 12px;font-size:12px;cursor:pointer;transition:all .15s;color:var(--tx)}
-.font-btn.sel{background:var(--burg);color:#fff;border-color:var(--burg)}
+.fbrow{display:flex;gap:4px;flex-wrap:wrap}
+.fbb{background:#f8f0f0;border:1.5px solid #e8d5d5;border-radius:8px;
+  padding:4px 10px;font-size:10px;cursor:pointer;color:var(--tx);
+  transition:all .15s;touch-action:manipulation}
+.fbb.sel{background:var(--burg);color:#fff;border-color:var(--burg)}
 
-.decor-grid{display:flex;gap:8px;flex-wrap:wrap}
-.decor-btn{background:#f8f0f0;border:2px solid #e8d5d5;border-radius:10px;padding:8px 12px;font-size:16px;cursor:pointer;transition:all .15s}
-.decor-btn.sel{background:#fde8e8;border-color:var(--burg)}
+.dbrow{display:flex;gap:4px;flex-wrap:wrap}
+.db{background:#f8f0f0;border:1.5px solid #e8d5d5;border-radius:8px;
+  padding:4px 8px;font-size:11px;cursor:pointer;transition:all .15s;
+  touch-action:manipulation}
+.db.sel{background:#fde8e8;border-color:var(--burg)}
 
-/* Canvas preview */
-#strip-preview{border-radius:14px;box-shadow:0 8px 32px rgba(139,26,26,.2);max-width:100%;display:block;margin:0 auto}
+#sprev{border-radius:10px;box-shadow:0 4px 18px rgba(139,26,26,.2);
+  max-width:100%;display:block;margin:0 auto}
 
-.dl-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
-.dl-btn{border:none;border-radius:50px;padding:13px 24px;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;letter-spacing:.5px}
-.dl-btn.primary{background:linear-gradient(135deg,var(--burg),var(--burgl));color:#fff;box-shadow:0 4px 16px rgba(139,26,26,.35)}
-.dl-btn.secondary{background:#fff;color:var(--burg);border:2.5px solid var(--burg)}
-.dl-btn:active{transform:scale(.97)}
+.dlrow{display:flex;gap:5px}
+.dlb{border:none;border-radius:14px;padding:9px 10px;font-weight:700;
+  font-size:11px;cursor:pointer;flex:1;touch-action:manipulation;
+  -webkit-appearance:none;transition:transform .1s}
+.dlb:active{transform:scale(.97)}
+.dlb.p{background:linear-gradient(135deg,var(--burg),var(--burgl));color:#fff}
+.dlb.s{background:#fff;color:var(--burg);border:2px solid var(--burg)}
 
-@media(min-width:600px){
-  .editor-layout{flex-wrap:nowrap}
-  .editor-right{width:240px;min-width:240px;margin:0}
-}
+.updbtn{background:linear-gradient(135deg,var(--burg),var(--burgl));color:#fff;
+  border:none;border-radius:14px;padding:9px;font-weight:700;font-size:11px;
+  cursor:pointer;width:100%;flex-shrink:0;touch-action:manipulation;-webkit-appearance:none}
 </style>
 </head>
 <body>
@@ -164,699 +220,553 @@ html,body{height:100%;font-family:-apple-system,'Helvetica Neue',Arial,sans-seri
 
 <!-- NAV -->
 <div class="nav">
-  <div>
-    <div class="nav-logo">Blushbooth</div>
-    <div class="nav-sub">By Gift</div>
-  </div>
-  <div class="nav-bow">🎀</div>
+  <div class="nav-logo">Blushbooth 🎀</div>
+  <div class="nav-step" id="nstep">Step 1 of 3</div>
 </div>
 
-<!-- ══ SCREEN 1: WELCOME ══ -->
-<div class="screen on" id="s-welcome">
-  <div class="welcome-hero">
-    <h1>Your Photobooth<br>Studio ✨</h1>
-    <p>Choose your layout, take photos with your camera,<br>and download your beautiful photo strip!</p>
+<!-- ══ WELCOME ══ -->
+<div class="screen on" id="sw">
+  <div class="wt">Your Photobooth ✨</div>
+  <div class="ws">Choose layout & theme, then take your photos!</div>
+  <div class="name-row">
+    <label>Name</label>
+    <input class="name-in" id="uname" placeholder="Gift" maxlength="20" value="Gift" autocomplete="off" autocorrect="off" spellcheck="false">
   </div>
-
-  <!-- Name -->
-  <div class="name-section">
-    <label>✦ Your Name on the Strip ✦</label>
-    <input class="name-input" id="uname" placeholder="Gift" maxlength="24" value="Gift">
-  </div>
-
-  <!-- Layout -->
-  <div class="section-title">Choose Your Layout</div>
-  <div class="layout-grid">
-    <div class="layout-card sel" data-layout="1" onclick="selLayout(this,1)">
-      <div class="layout-preview">
-        <div class="layout-slot" style="width:56px;height:42px"></div>
-      </div>
-      <div class="layout-name">1 Photo</div>
-      <div class="layout-desc">Single shot</div>
+  <div class="slbl">Layout</div>
+  <div class="lrow">
+    <div class="lc sel" onclick="selL(this,1)">
+      <div class="lcp"><div class="lcs" style="height:26px"></div></div>
+      <div class="lcn">1 Photo</div>
     </div>
-    <div class="layout-card" data-layout="2" onclick="selLayout(this,2)">
-      <div class="layout-preview">
-        <div class="layout-slot" style="width:56px;height:38px"></div>
-        <div class="layout-slot" style="width:56px;height:38px"></div>
-      </div>
-      <div class="layout-name">2 Photos</div>
-      <div class="layout-desc">Double strip</div>
+    <div class="lc" onclick="selL(this,2)">
+      <div class="lcp"><div class="lcs" style="height:15px"></div><div class="lcs" style="height:15px"></div></div>
+      <div class="lcn">2 Photos</div>
     </div>
-    <div class="layout-card" data-layout="4" onclick="selLayout(this,4)">
-      <div class="layout-preview">
-        <div class="layout-slot" style="width:56px;height:28px"></div>
-        <div class="layout-slot" style="width:56px;height:28px"></div>
-        <div class="layout-slot" style="width:56px;height:28px"></div>
-        <div class="layout-slot" style="width:56px;height:28px"></div>
-      </div>
-      <div class="layout-name">4 Photos</div>
-      <div class="layout-desc">Classic strip</div>
+    <div class="lc" onclick="selL(this,4)">
+      <div class="lcp"><div class="lcs" style="height:9px"></div><div class="lcs" style="height:9px"></div><div class="lcs" style="height:9px"></div><div class="lcs" style="height:9px"></div></div>
+      <div class="lcn">4 Photos</div>
     </div>
   </div>
-
-  <!-- Theme -->
-  <div class="section-title">Choose Your Theme</div>
-  <div class="theme-grid">
-    <div class="theme-card sel" data-theme="blush" onclick="selTheme(this,'blush')" style="background:linear-gradient(135deg,#fff0f7,#fde8f1)">
-      <div class="theme-preview" style="background:linear-gradient(135deg,#f9a8c9,#e87dab)">🎀</div>
-      <div class="theme-name" style="color:#8b1a4a">Blush Pink</div>
-    </div>
-    <div class="theme-card" data-theme="cinema" onclick="selTheme(this,'cinema')" style="background:linear-gradient(135deg,#fdf8f0,#f5e8d5)">
-      <div class="theme-preview" style="background:linear-gradient(135deg,#8b1a1a,#c0392b)">🎬</div>
-      <div class="theme-name" style="color:#8b1a1a">Cinema Ticket</div>
-    </div>
-    <div class="theme-card" data-theme="vintage" onclick="selTheme(this,'vintage')" style="background:linear-gradient(135deg,#fdf5e6,#f5e6c8)">
-      <div class="theme-preview" style="background:linear-gradient(135deg,#8b6914,#c4992a)">📷</div>
-      <div class="theme-name" style="color:#8b6914">Vintage Film</div>
-    </div>
-    <div class="theme-card" data-theme="midnight" onclick="selTheme(this,'midnight')" style="background:linear-gradient(135deg,#1a1a2e,#16213e)">
-      <div class="theme-preview" style="background:linear-gradient(135deg,#4a4aff,#9b59b6)">✨</div>
-      <div class="theme-name" style="color:#a8b4ff">Midnight</div>
-    </div>
+  <div class="slbl">Theme</div>
+  <div class="trow">
+    <div class="tc sel" onclick="selT(this,'blush')" style="background:linear-gradient(135deg,#fff0f7,#fde8f1)"><div class="tci">🎀</div><div class="tcn" style="color:#8b1a4a">Blush</div></div>
+    <div class="tc" onclick="selT(this,'cinema')" style="background:linear-gradient(135deg,#fdf8f0,#f5e8d5)"><div class="tci">🎬</div><div class="tcn" style="color:#8b1a1a">Cinema</div></div>
+    <div class="tc" onclick="selT(this,'vintage')" style="background:linear-gradient(135deg,#fdf5e6,#f5e6c8)"><div class="tci">📷</div><div class="tcn" style="color:#8b6914">Vintage</div></div>
+    <div class="tc" onclick="selT(this,'midnight')" style="background:#1a1a2e"><div class="tci">✨</div><div class="tcn" style="color:#a8b4ff">Night</div></div>
   </div>
-
-  <button class="start-btn" onclick="startCamera()">📸 Open Camera</button>
+  <button class="sbtn" onclick="startCam()">📸 Open Camera</button>
 </div>
 
-<!-- ══ SCREEN 2: CAMERA ══ -->
-<div class="screen" id="s-camera">
-  <div class="cam-hdr">
-    <button class="back-btn" onclick="goWelcome()">← Back</button>
-    <div class="cam-title" id="cam-title">Photo Strip 🎞️</div>
-    <div style="width:64px"></div>
+<!-- ══ CAMERA ══ -->
+<div class="screen" id="sc">
+  <div class="chdr">
+    <button class="bbtn" onclick="goW()">← Back</button>
+    <div class="ctitle" id="ctitle">Single Shot 📸</div>
+    <div style="width:50px"></div>
   </div>
-
-  <div id="cam-err" class="err-box" style="display:none">
-    <h4>📷 Camera Access Needed</h4>
-    <p id="cam-err-msg">Please allow camera access.</p>
-    <button class="retry-btn" onclick="initCam()">🔄 Try Again</button>
+  <div class="errbox" id="cerr">
+    <h4>📷 Camera Access Required</h4>
+    <p id="cerrmsg">Tap Try Again after allowing camera access in Settings.</p>
+    <button class="rbtn" onclick="initCam()">🔄 Try Again</button>
   </div>
-
-  <div class="cam-area">
-    <div class="cam-layout">
-      <!-- Strip thumbnails -->
-      <div class="cam-strip" id="cam-strip"></div>
-      <!-- Live view -->
-      <div class="cam-live">
-        <div class="vid-box">
-          <video id="vid" autoplay playsinline muted></video>
-          <div class="vid-overlay">
-            <div class="cdown-num" id="cdown"></div>
-          </div>
+  <div class="cmain">
+    <div class="cstrip" id="cstrip"></div>
+    <div class="cright">
+      <div class="vidwrap" id="vidwrap">
+        <video id="vid" autoplay playsinline muted></video>
+        <canvas id="prevCvs"></canvas>
+        <div class="cdover" id="cdover" style="display:none">
+          <div class="cdnum" id="cdnum"></div>
         </div>
-        <div class="cam-hint" id="cam-hint">Tap 📸 to begin</div>
-        <button class="shutter" id="shr" onclick="shoot()">📸</button>
       </div>
     </div>
   </div>
-
-  <!-- Adjustments -->
-  <div class="section-lbl">Camera Adjustments</div>
-  <div class="adj-row">
-    <div class="adj-item">
-      <label>Brightness</label>
-      <input type="range" min="0.5" max="2" step="0.05" value="1.1" id="adj-bright" oninput="updateFilter()">
-    </div>
-    <div class="adj-item">
-      <label>Contrast</label>
-      <input type="range" min="0.5" max="2" step="0.05" value="1.05" id="adj-contrast" oninput="updateFilter()">
-    </div>
-    <div class="adj-item">
-      <label>Saturation</label>
-      <input type="range" min="0" max="2" step="0.05" value="1.1" id="adj-sat" oninput="updateFilter()">
-    </div>
-    <div class="adj-item">
-      <label>Warmth</label>
-      <input type="range" min="0" max="30" step="1" value="5" id="adj-warm" oninput="updateFilter()">
-    </div>
+  <div class="cbot">
+    <button class="shr" id="shr" onclick="shoot()">📸</button>
+    <div class="chint" id="chint">Tap 📸 to begin</div>
   </div>
-
-  <!-- Filters -->
-  <div class="section-lbl" style="margin-top:12px">Filters</div>
-  <div class="filter-row" id="frow">
-    <div class="fpill on" onclick="setFilter(this,'none')">✨ Original</div>
-    <div class="fpill" onclick="setFilter(this,'pink')">🩷 Soft Pink</div>
-    <div class="fpill" onclick="setFilter(this,'warm')">🎞️ Warm Film</div>
-    <div class="fpill" onclick="setFilter(this,'vintage')">📷 Vintage</div>
-    <div class="fpill" onclick="setFilter(this,'bw')">🤍 B&W</div>
-    <div class="fpill" onclick="setFilter(this,'hcbw')">◼ High B&W</div>
-    <div class="fpill" onclick="setFilter(this,'sepia')">🟤 Sepia</div>
-    <div class="fpill" onclick="setFilter(this,'cool')">💙 Cool Blue</div>
+  <div class="frow" id="frow">
+    <div class="fp on" onclick="setF(this,'none')">✨ Original</div>
+    <div class="fp" onclick="setF(this,'pink')">🩷 Soft Pink</div>
+    <div class="fp" onclick="setF(this,'warm')">🎞️ Warm Film</div>
+    <div class="fp" onclick="setF(this,'vintage')">📷 Vintage</div>
+    <div class="fp" onclick="setF(this,'bw')">🤍 B&W</div>
+    <div class="fp" onclick="setF(this,'hcbw')">◼ High B&W</div>
+    <div class="fp" onclick="setF(this,'sepia')">🟤 Sepia</div>
+    <div class="fp" onclick="setF(this,'cool')">💙 Cool</div>
+  </div>
+  <div class="arow">
+    <div class="ai"><label>☀️ Bright</label><input type="range" min=".5" max="2" step=".05" value="1.1" id="abr" oninput="schedPrev()"></div>
+    <div class="ai"><label>◐ Contrast</label><input type="range" min=".5" max="2" step=".05" value="1.05" id="acon" oninput="schedPrev()"></div>
+    <div class="ai"><label>🌈 Color</label><input type="range" min="0" max="2" step=".05" value="1.1" id="asat" oninput="schedPrev()"></div>
+    <div class="ai"><label>🔆 Warm</label><input type="range" min="-50" max="50" step="1" value="10" id="awrm" oninput="schedPrev()"></div>
   </div>
 </div>
 
-<!-- ══ SCREEN 3: EDITOR ══ -->
-<div class="screen" id="s-editor">
-  <div class="cam-hdr">
-    <button class="back-btn" onclick="goCamera()">← Retake</button>
-    <div class="cam-title">Edit Your Strip ✏️</div>
-    <div style="width:64px"></div>
+<!-- ══ EDITOR ══ -->
+<div class="screen" id="se">
+  <div class="chdr">
+    <button class="bbtn" onclick="goC()">← Retake</button>
+    <div class="ctitle">Edit Strip ✏️</div>
+    <div style="width:50px"></div>
   </div>
-
-  <div class="editor-layout">
-    <!-- Controls -->
-    <div class="editor-left">
-
-      <!-- Frame style -->
-      <div class="editor-panel">
-        <h3>Frame Style</h3>
-        <div class="decor-grid" id="frame-grid">
-          <div class="decor-btn sel" data-frame="classic" onclick="selFrame(this,'classic')">🎞️ Classic</div>
-          <div class="decor-btn" data-frame="ticket" onclick="selFrame(this,'ticket')">🎟️ Ticket</div>
-          <div class="decor-btn" data-frame="scallop" onclick="selFrame(this,'scallop')">🌸 Scallop</div>
-          <div class="decor-btn" data-frame="minimal" onclick="selFrame(this,'minimal')">⬜ Minimal</div>
+  <div class="elay">
+    <div class="ectrls">
+      <div class="ep">
+        <h4>Frame Style</h4>
+        <div class="dbrow" id="fmg">
+          <div class="db sel" onclick="selFr(this,'classic')">🎞️ Classic</div>
+          <div class="db" onclick="selFr(this,'ticket')">🎟️ Ticket</div>
+          <div class="db" onclick="selFr(this,'scallop')">🌸 Scallop</div>
+          <div class="db" onclick="selFr(this,'minimal')">⬜ Minimal</div>
         </div>
       </div>
-
-      <!-- Background color -->
-      <div class="editor-panel">
-        <h3>Background Color</h3>
-        <div class="color-grid" id="bg-grid">
-          <div class="color-btn sel" data-col="#fdf8f0" style="background:#fdf8f0;border:2px solid #ddd" onclick="selBg(this,'#fdf8f0')"></div>
-          <div class="color-btn" data-col="#fff0f7" style="background:#fff0f7" onclick="selBg(this,'#fff0f7')"></div>
-          <div class="color-btn" data-col="#8b1a1a" style="background:#8b1a1a" onclick="selBg(this,'#8b1a1a')"></div>
-          <div class="color-btn" data-col="#1a1a2e" style="background:#1a1a2e" onclick="selBg(this,'#1a1a2e')"></div>
-          <div class="color-btn" data-col="#fdf5e6" style="background:#fdf5e6" onclick="selBg(this,'#fdf5e6')"></div>
-          <div class="color-btn" data-col="#b8d4e8" style="background:#b8d4e8" onclick="selBg(this,'#b8d4e8')"></div>
-          <div class="color-btn" data-col="#2c2c2c" style="background:#2c2c2c" onclick="selBg(this,'#2c2c2c')"></div>
-          <div class="color-btn" data-col="#ffffff" style="background:#fff;border:2px solid #ddd" onclick="selBg(this,'#ffffff')"></div>
+      <div class="ep">
+        <h4>Background Color</h4>
+        <div class="crow" id="bgg">
+          <div class="cb sel" style="background:#fdf8f0;outline:1.5px solid #ddd;outline-offset:1px" onclick="selBg(this,'#fdf8f0')"></div>
+          <div class="cb" style="background:#fff0f7" onclick="selBg(this,'#fff0f7')"></div>
+          <div class="cb" style="background:#8b1a1a" onclick="selBg(this,'#8b1a1a')"></div>
+          <div class="cb" style="background:#1a1a2e" onclick="selBg(this,'#1a1a2e')"></div>
+          <div class="cb" style="background:#fdf5e6" onclick="selBg(this,'#fdf5e6')"></div>
+          <div class="cb" style="background:#b8d4e8" onclick="selBg(this,'#b8d4e8')"></div>
+          <div class="cb" style="background:#fff;outline:1.5px solid #ddd;outline-offset:1px" onclick="selBg(this,'#ffffff')"></div>
+          <div class="cb" style="background:#2c2c2c" onclick="selBg(this,'#2c2c2c')"></div>
         </div>
       </div>
-
-      <!-- Border color -->
-      <div class="editor-panel">
-        <h3>Border Color</h3>
-        <div class="color-grid" id="bd-grid">
-          <div class="color-btn sel" data-col="#8b1a1a" style="background:#8b1a1a" onclick="selBd(this,'#8b1a1a')"></div>
-          <div class="color-btn" data-col="#e87dab" style="background:#e87dab" onclick="selBd(this,'#e87dab')"></div>
-          <div class="color-btn" data-col="#d4a853" style="background:#d4a853" onclick="selBd(this,'#d4a853')"></div>
-          <div class="color-btn" data-col="#4a7fa5" style="background:#4a7fa5" onclick="selBd(this,'#4a7fa5')"></div>
-          <div class="color-btn" data-col="#2c2c2c" style="background:#2c2c2c" onclick="selBd(this,'#2c2c2c')"></div>
-          <div class="color-btn" data-col="#ffffff" style="background:#fff;border:2px solid #ddd" onclick="selBd(this,'#ffffff')"></div>
+      <div class="ep">
+        <h4>Border Color</h4>
+        <div class="crow" id="bdg">
+          <div class="cb sel" style="background:#8b1a1a" onclick="selBd(this,'#8b1a1a')"></div>
+          <div class="cb" style="background:#e87dab" onclick="selBd(this,'#e87dab')"></div>
+          <div class="cb" style="background:#d4a853" onclick="selBd(this,'#d4a853')"></div>
+          <div class="cb" style="background:#4a7fa5" onclick="selBd(this,'#4a7fa5')"></div>
+          <div class="cb" style="background:#2c2c2c" onclick="selBd(this,'#2c2c2c')"></div>
+          <div class="cb" style="background:#fff;outline:1.5px solid #ddd;outline-offset:1px" onclick="selBd(this,'#ffffff')"></div>
         </div>
       </div>
-
-      <!-- Label text -->
-      <div class="editor-panel">
-        <h3>Label Text</h3>
-        <input class="text-input" id="label1" placeholder="e.g. Capturing Moments" value="Capturing Moments">
-        <input class="text-input" id="label2" placeholder="e.g. Photo Studio" value="Photo Studio">
-        <div class="font-grid">
-          <div class="font-btn sel" data-font="Georgia" onclick="selFont(this,'Georgia')" style="font-family:Georgia,serif;font-style:italic">Elegant</div>
-          <div class="font-btn" data-font="'Courier New'" onclick="selFont(this,&quot;'Courier New'&quot;)" style="font-family:'Courier New',monospace">Vintage</div>
-          <div class="font-btn" data-font="Arial" onclick="selFont(this,'Arial')" style="font-weight:700">Bold</div>
+      <div class="ep">
+        <h4>Labels & Font</h4>
+        <input class="tin" id="lbl1" value="Capturing Moments" placeholder="Label 1" autocorrect="off">
+        <input class="tin" id="lbl2" value="Photo Studio" placeholder="Label 2" autocorrect="off">
+        <div class="fbrow">
+          <div class="fbb sel" onclick="selFn(this,'Georgia,serif')" style="font-style:italic">Elegant</div>
+          <div class="fbb" onclick="selFn(this,&quot;'Courier New',monospace&quot;)" style="font-family:'Courier New'">Vintage</div>
+          <div class="fbb" onclick="selFn(this,'Arial Black,sans-serif')" style="font-weight:900">Bold</div>
         </div>
       </div>
-
-      <!-- Decorations -->
-      <div class="editor-panel">
-        <h3>Decorations</h3>
-        <div class="decor-grid" id="decor-grid">
-          <div class="decor-btn sel" data-d="bow" onclick="togDecor(this,'bow')">🎀 Bow</div>
-          <div class="decor-btn" data-d="stars" onclick="togDecor(this,'stars')">⭐ Stars</div>
-          <div class="decor-btn" data-d="barcode" onclick="togDecor(this,'barcode')">▐▌ Barcode</div>
-          <div class="decor-btn" data-d="ticket" onclick="togDecor(this,'ticket')">🎟️ Ticket</div>
-          <div class="decor-btn" data-d="hearts" onclick="togDecor(this,'hearts')">❤️ Hearts</div>
-          <div class="decor-btn" data-d="date" onclick="togDecor(this,'date')">📅 Date</div>
+      <div class="ep">
+        <h4>Decorations</h4>
+        <div class="dbrow" id="dcg">
+          <div class="db sel" onclick="togD(this,'bow')">🎀 Bow</div>
+          <div class="db" onclick="togD(this,'stars')">⭐ Stars</div>
+          <div class="db" onclick="togD(this,'barcode')">▐▌ Barcode</div>
+          <div class="db" onclick="togD(this,'hearts')">❤️ Hearts</div>
+          <div class="db" onclick="togD(this,'date')">📅 Date</div>
         </div>
       </div>
-
-      <button class="dl-btn primary" onclick="renderStrip()" style="width:100%;margin-bottom:10px">🔄 Update Preview</button>
+      <button class="updbtn" onclick="render()">🔄 Update Preview</button>
     </div>
-
-    <!-- Preview -->
-    <div class="editor-right">
-      <canvas id="strip-preview"></canvas>
-      <div class="dl-btns">
-        <button class="dl-btn primary" onclick="download('png')">⬇ PNG</button>
-        <button class="dl-btn primary" onclick="download('jpg')">⬇ JPEG</button>
-        <button class="dl-btn secondary" onclick="goWelcome()">🏠 Home</button>
+    <div class="eprev">
+      <canvas id="sprev"></canvas>
+      <div class="dlrow">
+        <button class="dlb p" onclick="dlImg('png')">⬇ PNG</button>
+        <button class="dlb p" onclick="dlImg('jpg')">⬇ JPG</button>
       </div>
+      <button class="dlb s" style="width:100%;margin-top:2px" onclick="goW()">🏠 Home</button>
     </div>
   </div>
 </div>
 
 <script>
-// ── State ──
-var numPhotos=4, theme='blush', filter='none', stream=null;
-var caps=[], busy=false;
-var edBg='#fdf8f0', edBd='#8b1a1a', edFrame='classic', edFont='Georgia';
-var edDecors=new Set(['bow']), edLabel1='Capturing Moments', edLabel2='Photo Studio';
+// ── Fix viewport height on iOS ──
+function setVh(){document.documentElement.style.setProperty('--vh',window.innerHeight*.01+'px');}
+setVh();window.addEventListener('resize',setVh);
 
-var FILTERS={
-  none:'',
-  pink:'sepia(15%) saturate(130%) hue-rotate(310deg) brightness(1.08)',
-  warm:'sepia(25%) saturate(120%) brightness(1.08) contrast(1.02)',
-  vintage:'sepia(45%) contrast(.92) brightness(.96) saturate(.85)',
-  bw:'grayscale(100%) contrast(1.1)',
-  hcbw:'grayscale(100%) contrast(1.5) brightness(1.1)',
-  sepia:'sepia(80%) contrast(.95) brightness(1.02)',
-  cool:'hue-rotate(190deg) saturate(.85) brightness(1.05)',
+// ── State ──
+var N=1,theme='blush',flt='none',stream=null,caps=[],busy=false;
+var raf=null,prevPending=false;
+var edBg='#fdf8f0',edBd='#8b1a1a',edFr='classic',edFn='Georgia,serif';
+var edD=new Set(['bow']);
+
+// ── Filter definitions (pixel-level) ──
+var FD={
+  none: {br:1,   con:1,    sat:1,   sepia:0,  gray:false, warm:0},
+  pink: {br:1.06,con:1.0,  sat:1.3, sepia:.12,gray:false, warm:20},
+  warm: {br:1.06,con:1.02, sat:1.15,sepia:.2, gray:false, warm:35},
+  vintage:{br:.95,con:.92, sat:.8,  sepia:.4, gray:false, warm:15},
+  bw:   {br:1.05,con:1.1,  sat:0,   sepia:0,  gray:true,  warm:0},
+  hcbw: {br:1.1, con:1.6,  sat:0,   sepia:0,  gray:true,  warm:0},
+  sepia:{br:1.0, con:.95,  sat:1,   sepia:.8, gray:false, warm:25},
+  cool: {br:1.04,con:1.0,  sat:.85, sepia:0,  gray:false, warm:-30},
 };
 
-// ── Selectors ──
-function selLayout(el,n){
-  numPhotos=n;
-  document.querySelectorAll('.layout-card').forEach(c=>c.classList.remove('sel'));
-  el.classList.add('sel');
-}
-function selTheme(el,t){
-  theme=t;
-  document.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('sel'));
-  el.classList.add('sel');
-}
-function selFrame(el,f){
-  edFrame=f;
-  document.querySelectorAll('#frame-grid .decor-btn').forEach(c=>c.classList.remove('sel'));
-  el.classList.add('sel');
-}
-function selBg(el,c){
-  edBg=c;
-  document.querySelectorAll('#bg-grid .color-btn').forEach(b=>b.classList.remove('sel'));
-  el.classList.add('sel');
-}
-function selBd(el,c){
-  edBd=c;
-  document.querySelectorAll('#bd-grid .color-btn').forEach(b=>b.classList.remove('sel'));
-  el.classList.add('sel');
-}
-function selFont(el,f){
-  edFont=f;
-  document.querySelectorAll('.font-btn').forEach(b=>b.classList.remove('sel'));
-  el.classList.add('sel');
-}
-function togDecor(el,d){
-  if(edDecors.has(d)){edDecors.delete(d);el.classList.remove('sel');}
-  else{edDecors.add(d);el.classList.add('sel');}
-}
-function setFilter(el,f){
-  filter=f;
-  document.querySelectorAll('.fpill').forEach(p=>p.classList.remove('on'));
-  el.classList.add('on');
-  updateFilter();
-}
-function updateFilter(){
-  var b=document.getElementById('adj-bright').value;
-  var c=document.getElementById('adj-contrast').value;
-  var s=document.getElementById('adj-sat').value;
-  var w=document.getElementById('adj-warm').value;
-  var base=FILTERS[filter]||'';
-  var adj='brightness('+b+') contrast('+c+') saturate('+s+')';
-  var full=adj+(base?' '+base:'');
-  var vid=document.getElementById('vid');
-  if(vid) vid.style.filter=full;
-}
+// ── UI Selectors ──
+function selL(el,n){N=n;document.querySelectorAll('.lc').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');}
+function selT(el,t){theme=t;document.querySelectorAll('.tc').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');}
+function selFr(el,f){edFr=f;document.querySelectorAll('#fmg .db').forEach(c=>c.classList.remove('sel'));el.classList.add('sel');}
+function selBg(el,c){edBg=c;document.querySelectorAll('#bgg .cb').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');}
+function selBd(el,c){edBd=c;document.querySelectorAll('#bdg .cb').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');}
+function selFn(el,f){edFn=f;document.querySelectorAll('.fbb').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');}
+function togD(el,d){if(edD.has(d)){edD.delete(d);el.classList.remove('sel');}else{edD.add(d);el.classList.add('sel');}}
+function setF(el,f){flt=f;document.querySelectorAll('.fp').forEach(p=>p.classList.remove('on'));el.classList.add('on');}
 
-// ── Navigation ──
-function show(id){
+// ── Screen navigation ──
+function show(id,step){
   document.querySelectorAll('.screen').forEach(s=>{s.classList.remove('on');s.style.display='none';});
-  var t=document.getElementById(id);t.classList.add('on');t.style.display='block';
+  var t=document.getElementById(id);t.classList.add('on');t.style.display='flex';
+  document.getElementById('nstep').textContent='Step '+step+' of 3';
 }
-function goWelcome(){stopCam();caps=[];show('s-welcome');}
-function goCamera(){show('s-camera');}
+function goW(){stopCam();stopPrev();caps=[];show('sw',1);}
+function goC(){stopPrev();show('sc',2);setTimeout(initCam,100);}
 
-// ── Camera ──
-async function startCamera(){
-  caps=[];
-  buildStrip();
-  show('s-camera');
-  document.getElementById('cam-title').textContent=
-    numPhotos===1?'Single Shot 📸':numPhotos===2?'Double Strip 🎞️':'Classic Strip 🎞️';
+// ── Start flow ──
+async function startCam(){
+  caps=[];buildStrip();
+  var tl={1:'Single Shot 📸',2:'Double Strip 🎞️',4:'Classic Strip 🎞️'};
+  document.getElementById('ctitle').textContent=tl[N]||'Photo Strip 🎞️';
+  show('sc',2);
   await initCam();
 }
 
+// ── Camera init ──
 async function initCam(){
-  document.getElementById('cam-err').style.display='none';
-  stopCam();
+  var err=document.getElementById('cerr');
+  err.style.display='none';
+  stopCam();stopPrev();
   var vid=document.getElementById('vid');
+  // Apple-recommended constraints for iPad
+  var constraints={
+    video:{
+      facingMode:'user',
+      width:{ideal:1280,max:1920},
+      height:{ideal:720,max:1080},
+      frameRate:{ideal:30,max:60},
+      aspectRatio:{ideal:4/3}
+    },
+    audio:false
+  };
   try{
-    stream=await navigator.mediaDevices.getUserMedia({
-      video:{facingMode:'user',width:{ideal:1920},height:{ideal:1440}},audio:false
-    });
+    stream=await navigator.mediaDevices.getUserMedia(constraints);
     vid.srcObject=stream;
-    await vid.play();
-    updateFilter();
+    vid.onloadedmetadata=function(){
+      vid.play().then(function(){
+        startPrev();
+      }).catch(function(e){showErr('Video play failed: '+e.message);});
+    };
+    vid.onerror=function(){showErr('Video error. Please try again.');};
   }catch(e){
-    var msg='Camera permission denied.';
-    if(e.name==='NotFoundError') msg='No camera found on this device.';
-    else if(e.name==='NotAllowedError') msg='Permission denied.\n\niPad: Settings → Privacy & Security → Camera → enable Safari.';
-    document.getElementById('cam-err-msg').textContent=msg;
-    document.getElementById('cam-err').style.display='block';
+    var msg='';
+    if(e.name==='NotAllowedError'||e.name==='PermissionDeniedError'){
+      msg='Camera permission denied.\n\niPad: Settings → Privacy & Security → Camera → enable Safari (or your browser).';
+    } else if(e.name==='NotFoundError'||e.name==='DevicesNotFoundError'){
+      msg='No camera found on this device.';
+    } else if(e.name==='NotReadableError'){
+      msg='Camera is in use by another app. Close other apps and try again.';
+    } else if(e.name==='OverconstrainedError'){
+      // Retry with simpler constraints
+      try{
+        stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false});
+        vid.srcObject=stream;
+        vid.onloadedmetadata=function(){vid.play().then(startPrev).catch(function(){});};
+        return;
+      }catch(e2){msg='Could not start camera: '+e2.message;}
+    } else {
+      msg='Camera error: '+e.message;
+    }
+    showErr(msg);
   }
 }
-function stopCam(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null;}}
 
-// ── Strip builder ──
+function showErr(msg){
+  document.getElementById('cerrmsg').textContent=msg;
+  document.getElementById('cerr').style.display='block';
+}
+function stopCam(){
+  if(stream){stream.getTracks().forEach(function(t){t.stop();});stream=null;}
+  var vid=document.getElementById('vid');
+  vid.srcObject=null;vid.onloadedmetadata=null;vid.onerror=null;
+}
+
+// ── Live filter preview (RAF loop) ──
+function startPrev(){
+  var vid=document.getElementById('vid');
+  var pc=document.getElementById('prevCvs');
+  var vw=document.getElementById('vidwrap');
+  function drawPrev(){
+    if(!stream||!vid.videoWidth){raf=requestAnimationFrame(drawPrev);return;}
+    var w=vw.clientWidth,h=vw.clientHeight;
+    if(pc.width!==w)pc.width=w;
+    if(pc.height!==h)pc.height=h;
+    var ctx=pc.getContext('2d');
+    // Draw mirrored video
+    ctx.save();ctx.translate(w,0);ctx.scale(-1,1);
+    ctx.drawImage(vid,0,0,w,h);
+    ctx.restore();
+    // Apply pixel filter
+    var br=parseFloat(document.getElementById('abr').value)||1;
+    var con=parseFloat(document.getElementById('acon').value)||1;
+    var sat=parseFloat(document.getElementById('asat').value)||1;
+    var wrm=parseFloat(document.getElementById('awrm').value)||0;
+    applyPx(ctx,w,h,br,con,sat,wrm,FD[flt]||FD.none);
+    if(flt!=='none'||br!==1||con!==1||sat!==1||wrm!==0){pc.classList.add('active');}
+    else{pc.classList.remove('active');}
+    raf=requestAnimationFrame(drawPrev);
+  }
+  stopPrev();
+  raf=requestAnimationFrame(drawPrev);
+}
+function stopPrev(){if(raf){cancelAnimationFrame(raf);raf=null;}
+  var pc=document.getElementById('prevCvs');pc.classList.remove('active');}
+function schedPrev(){}// sliders trigger via RAF loop
+
+// ── Pixel filter engine ──
+function applyPx(ctx,w,h,br,con,sat,wrm,f){
+  var id;
+  try{id=ctx.getImageData(0,0,w,h);}catch(e){return;}// CORS safety
+  var d=id.data,len=d.length;
+  var totalBr=Math.max(0,br*(f.br||1));
+  var totalCon=Math.max(0,con*(f.con||1));
+  var totalSat=f.gray?0:Math.max(0,sat*(f.sat!==undefined?f.sat:1));
+  var warmR=(wrm+(f.warm||0))/100*255;
+  var sep=f.sepia||0;
+  for(var i=0;i<len;i+=4){
+    var r=d[i],g=d[i+1],b=d[i+2];
+    // Saturation / grayscale
+    if(totalSat===0){var lum=0.299*r+0.587*g+0.114*b;r=lum;g=lum;b=lum;}
+    else if(totalSat!==1){var lum2=0.299*r+0.587*g+0.114*b;r=lum2+(r-lum2)*totalSat;g=lum2+(g-lum2)*totalSat;b=lum2+(b-lum2)*totalSat;}
+    // Sepia
+    if(sep>0){var sr=r*.393+g*.769+b*.189,sg=r*.349+g*.686+b*.168,sb=r*.272+g*.534+b*.131;r=r*(1-sep)+sr*sep;g=g*(1-sep)+sg*sep;b=b*(1-sep)+sb*sep;}
+    // Brightness
+    r*=totalBr;g*=totalBr;b*=totalBr;
+    // Contrast
+    r=(r-127.5)*totalCon+127.5;g=(g-127.5)*totalCon+127.5;b=(b-127.5)*totalCon+127.5;
+    // Warmth
+    r+=warmR;b-=warmR;
+    d[i]=r<0?0:r>255?255:r;d[i+1]=g<0?0:g>255?255:g;d[i+2]=b<0?0:b>255?255:b;
+  }
+  ctx.putImageData(id,0,0);
+}
+
+// ── Build thumbnail strip ──
 function buildStrip(){
-  var el=document.getElementById('cam-strip');
-  el.innerHTML='';
-  for(var i=0;i<numPhotos;i++){
+  var el=document.getElementById('cstrip');el.innerHTML='';
+  for(var i=0;i<N;i++){
     var d=document.createElement('div');
-    d.className='slot'+(i===0?' active':'');
-    d.id='slot-'+i;
-    d.innerHTML='<span class="slot-num">'+(i+1)+'</span><span class="slot-ck"></span><span style="font-size:20px;opacity:.3">📷</span>';
+    d.className='slot'+(i===0?' active':'');d.id='sl'+i;
+    d.innerHTML='<span class="snum">'+(i+1)+'</span><span class="sck"></span><span class="slot-icon">📷</span>';
     el.appendChild(d);
   }
-  updateHint();
+  updH();
 }
-
-function updateHint(){
-  var n=caps.length;
-  var rem=numPhotos-n;
-  var h=document.getElementById('cam-hint');
-  if(rem>0) h.textContent='Shot '+(n+1)+' of '+numPhotos+' — tap 📸 to capture';
-  else h.textContent='All done! ✨ Processing...';
+function updH(){
+  var r=N-caps.length;
+  document.getElementById('chint').textContent=
+    r>0?'Shot '+(caps.length+1)+' of '+N+' — tap 📸 to capture':'All done! Building strip...';
 }
 
 // ── Shoot ──
 async function shoot(){
-  if(busy) return;
-  var next=caps.length;
-  if(next>=numPhotos) return;
-  busy=true;
-  document.getElementById('shr').style.opacity='.4';
+  if(busy||caps.length>=N)return;
+  var btn=document.getElementById('shr');
+  busy=true;btn.disabled=true;
+  var cdover=document.getElementById('cdover');
+  var cdnum=document.getElementById('cdnum');
+  cdover.style.display='flex';cdnum.style.display='block';
+  for(var i=3;i>=1;i--){cdnum.textContent=i;await sleep(1000);}
+  cdnum.style.display='none';cdover.style.display='none';
+  doFlash();await sleep(100);
 
-  // Countdown
-  var cd=document.getElementById('cdown');
-  cd.style.display='block';
-  for(var i=3;i>=1;i--){cd.textContent=i;await sleep(1000);}
-  cd.style.display='none';
-
-  // Flash
-  doFlash();
-  await sleep(80);
-
-  // Capture
+  // ── Capture frame at native resolution ──
   var vid=document.getElementById('vid');
+  var vw=vid.videoWidth||1280,vh=vid.videoHeight||720;
+  // Use 4:3 crop for Apple standard (iPad native ratio)
+  var targetAR=4/3;
+  var srcW,srcH,srcX,srcY;
+  var vidAR=vw/vh;
+  if(vidAR>targetAR){srcH=vh;srcW=Math.round(vh*targetAR);srcX=Math.round((vw-srcW)/2);srcY=0;}
+  else{srcW=vw;srcH=Math.round(vw/targetAR);srcX=0;srcY=Math.round((vh-srcH)/2);}
   var c=document.createElement('canvas');
-  c.width=vid.videoWidth||640;c.height=vid.videoHeight||480;
+  c.width=srcW;c.height=srcH;
   var ctx=c.getContext('2d');
-  // Apply adjustments
-  var b=document.getElementById('adj-bright').value;
-  var con=document.getElementById('adj-contrast').value;
-  var sat=document.getElementById('adj-sat').value;
-  var base=FILTERS[filter]||'';
-  ctx.filter='brightness('+b+') contrast('+con+') saturate('+sat+')'+(base?' '+base:'');
-  ctx.translate(c.width,0);ctx.scale(-1,1);
-  ctx.drawImage(vid,0,0);
+  // Mirror (selfie) + crop
+  ctx.translate(srcW,0);ctx.scale(-1,1);
+  ctx.drawImage(vid,-srcX,-srcY,vw,vh);
+  ctx.setTransform(1,0,0,1,0,0);
+  // Apply filter at full resolution
+  var br=parseFloat(document.getElementById('abr').value)||1;
+  var con=parseFloat(document.getElementById('acon').value)||1;
+  var sat=parseFloat(document.getElementById('asat').value)||1;
+  var wrm=parseFloat(document.getElementById('awrm').value)||0;
+  applyPx(ctx,srcW,srcH,br,con,sat,wrm,FD[flt]||FD.none);
+
+  var nx=caps.length;
   caps.push(c);
 
   // Update thumbnail
-  var slot=document.getElementById('slot-'+next);
+  var slot=document.getElementById('sl'+nx);
   if(slot){
-    slot.innerHTML='<span class="slot-num">'+(next+1)+'</span><span class="slot-ck">✅</span>';
+    slot.innerHTML='<span class="snum">'+(nx+1)+'</span><span class="sck">✅</span>';
     slot.classList.remove('active');slot.classList.add('done');
-    var img=new Image();img.src=c.toDataURL('image/jpeg',.85);
-    img.style.cssText='position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px';
+    var img=document.createElement('img');
+    img.src=c.toDataURL('image/jpeg',.75);
     slot.appendChild(img);
   }
-  // Activate next
-  if(next+1<numPhotos){
-    var ns=document.getElementById('slot-'+(next+1));
-    if(ns) ns.classList.add('active');
-  }
+  if(nx+1<N){var ns=document.getElementById('sl'+(nx+1));if(ns)ns.classList.add('active');}
 
-  busy=false;
-  document.getElementById('shr').style.opacity='1';
-  updateHint();
+  busy=false;btn.disabled=false;
+  updH();
 
-  if(caps.length>=numPhotos){
-    await sleep(600);
-    stopCam();
-    buildEditor();
-    show('s-editor');
-    renderStrip();
+  if(caps.length>=N){
+    await sleep(400);
+    stopCam();stopPrev();
+    show('se',3);
+    setTimeout(render,50);
   }
 }
 
-// ── Editor ──
-function buildEditor(){
-  edLabel1=document.getElementById('label1').value||'Capturing Moments';
-  edLabel2=document.getElementById('label2').value||'Photo Studio';
-}
-
-// ── Render Strip ──
-function renderStrip(){
-  edLabel1=document.getElementById('label1').value||'Capturing Moments';
-  edLabel2=document.getElementById('label2').value||'Photo Studio';
-
-  var n=caps.length;if(n===0)return;
-  var W=320,PH=Math.round(W*0.72),GAP=10,PAD=18;
-  var HDR=edDecors.has('ticket')||edFrame==='ticket'?90:60;
-  var FTR=edDecors.has('barcode')?80:50;
+// ── Render strip canvas ──
+function render(){
+  var n=caps.length;if(!n)return;
+  // Strip dimensions (portrait format)
+  var W=300,PH=Math.round(W*3/4),GAP=8,PAD=14;
+  var HDR=edFr==='ticket'?80:52,FTR=edD.has('barcode')?70:44;
   var H=PAD+HDR+n*(PH+GAP)-GAP+PAD+FTR;
-
-  var rc=document.getElementById('strip-preview');
+  var rc=document.getElementById('sprev');
   rc.width=W;rc.height=H;
   var ctx=rc.getContext('2d');
 
-  // Draw theme background
-  drawBg(ctx,W,H);
-  // Draw frame border
-  drawBorder(ctx,W,H);
-  // Draw header
-  drawHeader(ctx,W,HDR);
-  // Draw photos
-  for(var i=0;i<n;i++){
-    var y=PAD+HDR+i*(PH+GAP);
-    drawPhoto(ctx,caps[i],PAD,y,W-PAD*2,PH);
-  }
-  // Draw footer
-  drawFooter(ctx,W,H,FTR);
-  // Draw decorations
-  drawDecors(ctx,W,H,PAD,HDR);
-}
-
-function drawBg(ctx,W,H){
-  // Base
+  // Background
   ctx.fillStyle=edBg;ctx.fillRect(0,0,W,H);
 
-  // Theme-specific patterns
-  if(edFrame==='ticket'||theme==='cinema'){
-    // Ticket notches
-    ctx.fillStyle=edBd;
-    ctx.fillRect(0,0,W,8);ctx.fillRect(0,H-8,W,8);
-    // Dashed separator line
+  // Frame style
+  if(edFr==='ticket'){
+    // Cinema ticket style
+    ctx.fillStyle=edBd;ctx.fillRect(0,0,W,6);ctx.fillRect(0,H-6,W,6);
     ctx.setLineDash([6,4]);ctx.strokeStyle=edBd;ctx.lineWidth=1.5;
-    ctx.beginPath();ctx.moveTo(20,H*0.18);ctx.lineTo(W-20,H*0.18);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(16,HDR);ctx.lineTo(W-16,HDR);ctx.stroke();
     ctx.setLineDash([]);
-    // Side notches
-    [0.3,0.6].forEach(p=>{
-      ctx.beginPath();ctx.arc(-1,H*p,12,0,Math.PI*2);ctx.fillStyle=edBg;ctx.fill();
-      ctx.beginPath();ctx.arc(W+1,H*p,12,0,Math.PI*2);ctx.fillStyle=edBg;ctx.fill();
+    // Notch circles
+    [.25,.5,.75].forEach(function(p){
+      ctx.beginPath();ctx.arc(-1,H*p,10,0,Math.PI*2);ctx.fillStyle=edBg;ctx.fill();
+      ctx.beginPath();ctx.arc(W+1,H*p,10,0,Math.PI*2);ctx.fillStyle=edBg;ctx.fill();
     });
-  } else if(edFrame==='scallop'){
-    // Scallop border via clip
-    drawScallopBorder(ctx,W,H,edBd,10);
+  } else if(edFr==='scallop'){
+    // Scallop border
+    ctx.strokeStyle=edBd;ctx.lineWidth=3;
+    var r=7;
+    ctx.beginPath();
+    var stX=Math.floor(W/(r*2)),stY=Math.floor(H/(r*2));
+    for(var i=0;i<stX;i++)ctx.arc(i*r*2+r,r,r,Math.PI,0,false);
+    for(var i=0;i<stY;i++)ctx.arc(W-r,i*r*2+r,r,-Math.PI/2,Math.PI/2,false);
+    for(var i=stX-1;i>=0;i--)ctx.arc(i*r*2+r,H-r,r,0,Math.PI,false);
+    for(var i=stY-1;i>=0;i--)ctx.arc(r,i*r*2+r,r,Math.PI/2,Math.PI*1.5,false);
+    ctx.stroke();
+  } else if(edFr==='minimal'){
+    ctx.strokeStyle=edBd;ctx.lineWidth=2.5;ctx.strokeRect(2,2,W-4,H-4);
   } else {
-    // Simple border
-    ctx.strokeStyle=edBd;ctx.lineWidth=8;
-    ctx.strokeRect(4,4,W-8,H-8);
-    ctx.strokeStyle=edBg;ctx.lineWidth=3;
-    ctx.strokeRect(10,10,W-20,H-20);
+    // Classic double border
+    ctx.strokeStyle=edBd;ctx.lineWidth=7;ctx.strokeRect(4,4,W-8,H-8);
+    ctx.strokeStyle=edBg;ctx.lineWidth=2.5;ctx.strokeRect(9,9,W-18,H-18);
   }
-}
 
-function drawScallopBorder(ctx,W,H,color,r){
-  ctx.save();
-  ctx.strokeStyle=color;ctx.lineWidth=4;
-  var steps=Math.floor(W/(r*2));
-  ctx.beginPath();
-  // Top
-  for(var i=0;i<steps;i++){var x=i*(r*2)+r;ctx.arc(x,r,r,Math.PI,0);}
-  // Right
-  steps=Math.floor(H/(r*2));
-  for(var i=0;i<steps;i++){var y=i*(r*2)+r;ctx.arc(W-r,y,r,Math.PI*1.5,Math.PI*.5);}
-  // Bottom
-  steps=Math.floor(W/(r*2));
-  for(var i=steps-1;i>=0;i--){var x=i*(r*2)+r;ctx.arc(x,H-r,r,0,Math.PI);}
-  // Left
-  steps=Math.floor(H/(r*2));
-  for(var i=steps-1;i>=0;i--){var y=i*(r*2)+r;ctx.arc(r,y,r,Math.PI*.5,Math.PI*1.5);}
-  ctx.stroke();ctx.restore();
-}
-
-function drawBorder(ctx,W,H){
-  // Already done in drawBg for most themes
-  if(edFrame==='minimal'){
-    ctx.strokeStyle=edBd;ctx.lineWidth=3;ctx.setLineDash([]);
-    ctx.strokeRect(2,2,W-4,H-4);
-  }
-}
-
-function drawHeader(ctx,W,HDR){
-  var nm=document.getElementById('uname').value.trim()||'Gift';
-  var isTicket=edFrame==='ticket'||theme==='cinema';
-
-  ctx.save();
-  if(isTicket){
-    // Theater ticket header
-    ctx.fillStyle=edBd;
-    ctx.fillRect(0,0,W,HDR);
+  // Header
+  var nm=(document.getElementById('uname').value||'Gift').trim();
+  ctx.textAlign='center';
+  if(edFr==='ticket'){
+    ctx.fillStyle=edBd;ctx.fillRect(0,0,W,HDR);
     ctx.fillStyle='#fff';
-    ctx.font='bold 13px "Courier New",monospace';
-    ctx.textAlign='center';
-    ctx.fillText('★★★  THEATER TICKET  ★★★',W/2,22);
-    ctx.font='italic bold 18px Georgia,serif';
-    ctx.fillText('Blushbooth',W/2,42);
-    ctx.font='11px "Courier New"';
-    ctx.fillStyle='rgba(255,255,255,.8)';
-    ctx.fillText('By '+nm,W/2,58);
-    // Stars
-    ctx.font='14px serif';
-    ctx.fillText('★ ★ ★',W/2,HDR-10);
-  } else if(theme==='vintage'){
-    ctx.fillStyle=edBd;
-    ctx.font='italic bold 20px Georgia,serif';
-    ctx.textAlign='center';
-    ctx.fillText('Blushbooth',W/2,32);
-    ctx.font='12px "Courier New"';
-    ctx.fillStyle=edBd;ctx.globalAlpha=.7;
-    ctx.fillText('By '+nm+'  ·  Studio',W/2,50);
-    ctx.globalAlpha=1;
-    // Film strip dots
-    [20,W/2-20,W/2+20,W-20].forEach(x=>{
-      ctx.fillStyle=edBd;ctx.globalAlpha=.3;
-      ctx.beginPath();ctx.arc(x,HDR-14,5,0,Math.PI*2);ctx.fill();
-      ctx.globalAlpha=1;
-    });
+    ctx.font='bold 11px "Courier New",monospace';ctx.fillText('★★  THEATER TICKET  ★★',W/2,18);
+    ctx.font='italic bold 18px Georgia,serif';ctx.fillText('Blushbooth',W/2,36);
+    ctx.font='10px "Courier New",monospace';ctx.globalAlpha=.85;ctx.fillText('By '+nm,W/2,52);ctx.globalAlpha=1;
+    ctx.font='12px serif';ctx.fillText('★  ★  ★',W/2,HDR-10);
   } else {
-    // Default / blush
     ctx.fillStyle=edBd;
-    ctx.font='italic bold 22px Georgia,serif';
-    ctx.textAlign='center';
-    ctx.shadowColor='rgba(0,0,0,.1)';ctx.shadowBlur=4;
-    ctx.fillText('Blushbooth',W/2,30);
-    ctx.shadowBlur=0;
-    ctx.font='11px Arial';
-    ctx.fillStyle=edBd;ctx.globalAlpha=.65;
-    ctx.fillText('✦  By '+nm+'  ✦',W/2,46);
-    ctx.globalAlpha=1;
+    ctx.font='italic bold 17px '+edFn;
+    ctx.shadowColor='rgba(0,0,0,.07)';ctx.shadowBlur=3;
+    ctx.fillText('Blushbooth',W/2,24);ctx.shadowBlur=0;
+    ctx.font='10px Arial,sans-serif';ctx.globalAlpha=.6;
+    ctx.fillText('✦  By '+nm+'  ✦',W/2,40);ctx.globalAlpha=1;
   }
-  ctx.restore();
-}
 
-function drawPhoto(ctx,src,x,y,w,h){
-  ctx.save();
-  // Rounded photo
-  rr(ctx,x,y,w,h,6);ctx.clip();
-  ctx.drawImage(src,x,y,w,h);
-  ctx.restore();
-  // Photo border
-  ctx.strokeStyle=edBd;ctx.lineWidth=2;
-  rr(ctx,x,y,w,h,6);ctx.stroke();
-}
+  // Photos — drawn at 4:3 ratio
+  for(var i=0;i<n;i++){
+    var py=PAD+HDR+i*(PH+GAP);
+    ctx.save();
+    rrClip(ctx,PAD,py,W-PAD*2,PH,5);ctx.clip();
+    ctx.drawImage(caps[i],PAD,py,W-PAD*2,PH);
+    ctx.restore();
+    ctx.strokeStyle=edBd;ctx.lineWidth=1.5;
+    rrClip(ctx,PAD,py,W-PAD*2,PH,5);ctx.stroke();
+  }
 
-function drawFooter(ctx,W,H,FTR){
-  var y=H-FTR;
-  var l1=document.getElementById('label1').value||'Capturing Moments';
-  var l2=document.getElementById('label2').value||'Photo Studio';
-  var nm=document.getElementById('uname').value.trim()||'Gift';
+  // Footer
+  var fy=H-FTR;
+  ctx.fillStyle=edBg;ctx.fillRect(0,fy,W,FTR);
+  ctx.setLineDash([4,3]);ctx.strokeStyle=edBd;ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(16,fy+2);ctx.lineTo(W-16,fy+2);ctx.stroke();
+  ctx.setLineDash([]);
+  var l1=(document.getElementById('lbl1').value||'Capturing Moments').trim();
+  var l2=(document.getElementById('lbl2').value||'Photo Studio').trim();
 
-  ctx.save();
-
-  if(edDecors.has('barcode')){
-    // Barcode
-    ctx.fillStyle=edBg;
-    ctx.fillRect(0,y,W,FTR);
-    // Separator
-    ctx.strokeStyle=edBd;ctx.lineWidth=1.5;ctx.setLineDash([4,3]);
-    ctx.beginPath();ctx.moveTo(20,y+2);ctx.lineTo(W-20,y+2);ctx.stroke();
-    ctx.setLineDash([]);
-    // Text
-    ctx.font='italic bold 12px '+edFont;
-    ctx.fillStyle=edBd;ctx.textAlign='center';
-    ctx.fillText(l1,W/2,y+18);
-    ctx.font='10px "Courier New"';ctx.globalAlpha=.65;
-    ctx.fillText(l2+'  ·  By '+nm,W/2,y+30);
-    ctx.globalAlpha=1;
+  if(edD.has('barcode')){
+    ctx.font='italic 11px '+edFn;ctx.fillStyle=edBd;ctx.textAlign='center';
+    ctx.fillText(l1,W/2,fy+16);
+    ctx.font='9px "Courier New",monospace';ctx.globalAlpha=.6;
+    ctx.fillText(l2+' · By '+nm,W/2,fy+28);ctx.globalAlpha=1;
     // Barcode bars
-    var bx=40,by=y+36,bw=W-80,bh=24;
-    var barW=3,gapW=2,x2=bx;
-    var pattern=[3,1,2,1,3,1,1,2,3,2,1,1,2,3,1,2,1,3,2,1];
-    var isBar=true;
-    ctx.fillStyle=edBd;
-    pattern.forEach(function(seg){
-      var sw=(seg/pattern.reduce((a,b)=>a+b,0))*bw;
-      if(isBar){ctx.fillRect(x2,by,sw,bh);}
-      x2+=sw;isBar=!isBar;
-    });
-    // Fill remaining
-    if(x2<bx+bw) ctx.fillRect(x2,by,bx+bw-x2,bh);
-    ctx.font='9px "Courier New"';ctx.globalAlpha=.5;
-    ctx.fillText('No.'+Date.now().toString().slice(-8),W/2,by+bh+12);
-    ctx.globalAlpha=1;
-    // ADMIT MORE
-    ctx.font='bold 11px Arial';ctx.fillStyle=edBd;ctx.globalAlpha=.8;
-    ctx.fillText('★  ADMIT MORE  ★',W/2,H-6);ctx.globalAlpha=1;
+    var bx=30,by=fy+32,bw=W-60,bh=20;
+    var bars=[3,1,2,1,3,1,1,2,3,2,1,1,2,3,1,2,1,3];
+    var tot=bars.reduce(function(a,b){return a+b;},0);
+    var x2=bx,isb=true;ctx.fillStyle=edBd;
+    bars.forEach(function(seg){var sw=Math.round((seg/tot)*bw);if(isb)ctx.fillRect(x2,by,sw,bh);x2+=sw;isb=!isb;});
+    ctx.font='7px "Courier New"';ctx.globalAlpha=.4;
+    ctx.fillText('No.'+Date.now().toString().slice(-10),W/2,fy+FTR-3);ctx.globalAlpha=1;
+    ctx.font='bold 9px Arial';ctx.fillStyle=edBd;ctx.globalAlpha=.7;
+    ctx.fillText('★ ADMIT MORE ★',W/2,fy+FTR+10<H?fy+FTR-12:fy+FTR-4);ctx.globalAlpha=1;
   } else {
-    ctx.fillStyle=edBg;ctx.fillRect(0,y,W,FTR);
-    ctx.strokeStyle=edBd;ctx.lineWidth=1;ctx.setLineDash([4,3]);
-    ctx.beginPath();ctx.moveTo(20,y+2);ctx.lineTo(W-20,y+2);ctx.stroke();ctx.setLineDash([]);
-    ctx.font='italic bold 14px '+edFont;ctx.fillStyle=edBd;ctx.textAlign='center';
-    ctx.fillText(l1,W/2,y+22);
-    ctx.font='11px '+edFont;ctx.globalAlpha=.7;
-    ctx.fillText(l2+'  ✦  By '+nm,W/2,y+38);ctx.globalAlpha=1;
-    if(edDecors.has('date')){
-      var dt=new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
-      ctx.font='10px "Courier New"';ctx.fillStyle=edBd;ctx.globalAlpha=.55;
-      ctx.fillText(dt,W/2,y+52);ctx.globalAlpha=1;
+    ctx.font='italic bold 12px '+edFn;ctx.fillStyle=edBd;ctx.textAlign='center';
+    ctx.fillText(l1,W/2,fy+18);
+    ctx.font='10px '+edFn;ctx.globalAlpha=.65;
+    ctx.fillText(l2+' ✦ By '+nm,W/2,fy+32);ctx.globalAlpha=1;
+    if(edD.has('date')){
+      var dt=new Date().toLocaleDateString('en-AU',{day:'2-digit',month:'short',year:'numeric'});
+      ctx.font='8px "Courier New",monospace';ctx.globalAlpha=.5;ctx.fillText(dt,W/2,fy+42);ctx.globalAlpha=1;
     }
   }
-  ctx.restore();
-}
 
-function drawDecors(ctx,W,H,PAD,HDR){
-  ctx.save();
+  // Decorations
   ctx.textAlign='center';
-
-  if(edDecors.has('bow')){
-    ctx.font='28px serif';
-    ctx.fillText('🎀',W/2,HDR+28);
-  }
-  if(edDecors.has('stars')){
-    ctx.font='14px serif';
-    ctx.fillText('⭐',PAD,HDR+16);
-    ctx.fillText('⭐',W-PAD,HDR+16);
-  }
-  if(edDecors.has('hearts')){
-    ctx.font='12px serif';
-    ctx.fillText('❤️',PAD+4,H/2);
-    ctx.fillText('❤️',W-PAD-4,H/2);
-  }
-  if(edDecors.has('ticket')){
-    ctx.font='bold 10px "Courier New"';
-    ctx.fillStyle=edBd;ctx.globalAlpha=.5;
-    ctx.fillText('★ THANK YOU ★ SEE YOU AGAIN ★ THANK YOU ★',W/2,H-28);
-    ctx.globalAlpha=1;
-  }
-
-  ctx.restore();
+  if(edD.has('bow')){ctx.font='20px serif';ctx.fillText('🎀',W/2,HDR+18);}
+  if(edD.has('stars')){ctx.font='11px serif';ctx.fillText('⭐',PAD+4,HDR+16);ctx.fillText('⭐',W-PAD-4,HDR+16);}
+  if(edD.has('hearts')){ctx.font='10px serif';ctx.fillText('❤️',PAD+2,H/2+5);ctx.fillText('❤️',W-PAD-2,H/2+5);}
 }
 
 // ── Download ──
-function download(fmt){
-  renderStrip();
-  var rc=document.getElementById('strip-preview');
-  var nm=(document.getElementById('uname').value.trim()||'gift').toLowerCase();
+function dlImg(fmt){
+  render();
+  var rc=document.getElementById('sprev');
+  var nm=(document.getElementById('uname').value||'gift').trim().toLowerCase().replace(/\s+/g,'-');
+  var ts=new Date().toISOString().slice(0,10);
   var a=document.createElement('a');
-  a.download='blushbooth-'+nm+'-'+Date.now()+(fmt==='png'?'.png':'.jpg');
-  a.href=rc.toDataURL(fmt==='png'?'image/png':'image/jpeg',0.97);
+  a.download='blushbooth-'+nm+'-'+ts+(fmt==='png'?'.png':'.jpg');
+  a.href=rc.toDataURL(fmt==='png'?'image/png':'image/jpeg',.97);
   a.click();
 }
 
-// ── Utils ──
-function doFlash(){var f=document.getElementById('flash');f.classList.add('go');setTimeout(()=>f.classList.remove('go'),200);}
-function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
-function rr(ctx,x,y,w,h,r){
-  ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
-  ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
-  ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
-  ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
+// ── Utilities ──
+function doFlash(){var f=document.getElementById('flash');f.classList.add('go');setTimeout(function(){f.classList.remove('go');},220);}
+function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
+function rrClip(ctx,x,y,w,h,r){
+  ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);
+  ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);
+  ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);
+  ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);
+  ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
 }
 
-// Init defaults
-show('s-welcome');
+// ── Init ──
+show('sw',1);
 </script>
 </body>
 </html>
